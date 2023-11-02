@@ -61,21 +61,6 @@
         };
         // video.addEventListener("click", playVideo);
         video.addEventListener("touchstart", playVideo);
-        video.addEventListener("webkitfullscreenchange", function () {
-          if (document.webkitFullscreenElement === this) {
-            screen.orientation.lock("landscape");
-          } else {
-            screen.orientation.unlock();
-          }
-        });
-
-        video.addEventListener("fullscreenchange", function () {
-          if (document.fullscreenElement === this) {
-            screen.orientation.lock("landscape");
-          } else {
-            screen.orientation.unlock();
-          }
-        });
       });
     </script>
   </body>
