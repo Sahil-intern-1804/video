@@ -27,7 +27,7 @@
     <div class="main-div">
       <h1>Video Alignment</h1>
       <div class="video-div">
-        <video width="100%" id="myVideo" height="100%" controls autoplay>
+        <video width="100%" id="myVideo" height="100%" controls>
           <source id="videoSource" type="video/mp4" preload="metadata" />
           Your browser does not support the video tag.
         </video>
@@ -46,6 +46,7 @@
 
         video.load();
       }
+
       window.addEventListener("load", setVideoSource);
       window.addEventListener("resize", setVideoSource);
       document.addEventListener("DOMContentLoaded", function () {
@@ -59,6 +60,20 @@
             video.pause();
           }
         };
+        video.addEventListener("click", () => {
+          if (video.requestFullscreen) {
+            video.requestFullscreen();
+          } else if (video.mozRequestFullScreen) {
+            /* Firefox */
+            video.mozRequestFullScreen();
+          } else if (video.webkitRequestFullscreen) {
+            /* Chrome, Safari and Opera */
+            video.webkitRequestFullscreen();
+          } else if (video.msRequestFullscreen) {
+            /* IE/Edge */
+            video.msRequestFullscreen();
+          }
+        });
         // video.addEventListener("click", playVideo);
         video.addEventListener("touchstart", playVideo);
       });
